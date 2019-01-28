@@ -82,35 +82,29 @@ newArray.flatten
 end
 
 def all_supplies_in_holidays(holiday_hash)
-holiday_hash.each do |season,value|
-  puts "#{season.capitalize}:"
-  value.each do |holiday,value|
-    a = holiday.to_s
-    wordsArray = []
-    b = a.split("_")
-    b.each do |words|
-      wordsArray << words.capitalize
-    end
-    a = wordsArray.join(' ')
-    print "    #{a} :"
-    value.each_with_index do |final, index|
-      if index == value.size - 1
-      puts " #{final}"
-    else
-      print " #{final},"
-
-    end
+holiday_hash.each do |season, holidays|
+    puts "#{season.capitalize}:"
+    holidays.each do |holiday, supplies|
+      puts"  #{holiday.to_s.split('_').map {|w| w.capitalize }.join(' ') }: #{supplies.join(", ")}"
     end
   end
 end
-end
-
-
-
-
+# Question 7
+# Write a method to collect all holidays with BBQ
 #all_supplies_in_holidays(holiday_supplies)
 def all_holidays_with_bbq(holiday_hash)
   # return an array of holiday names (as symbols) where supply lists
   # include the string "BBQ"
-
+  arr = []
+  holiday_hash.each do |season, holidays|
+    holidays.each do |holiday, supplies|
+      supplies.each do |x|
+        if x == "BBQ"
+         arr << holiday
+        end
+      end
+    end
+  end
+  arr
 end
+#all_holidays_with_bbq(holiday_supplies)
