@@ -82,15 +82,17 @@ newArray.flatten
 end
 
 def all_supplies_in_holidays(holiday_hash)
-
 holiday_hash.each do |season,value|
-
   puts "#{season.capitalize}:"
   value.each do |holiday,value|
     a = holiday.to_s
+    wordsArray = []
     b = a.split("_")
-    a = b.join(" ").capitalize
-    print "  #{a}:"
+    b.each do |words|
+      wordsArray << words.capitalize
+    end
+    a = wordsArray.join(' ')
+    print "    #{a} :"
     value.each_with_index do |final, index|
       if index == value.size - 1
       puts " #{final}"
